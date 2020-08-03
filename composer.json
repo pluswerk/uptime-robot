@@ -1,0 +1,21 @@
+{
+    "name" : "pluswerk/uptime-robot",
+    "description" : "Simple wrapper to call uptime-robot heartbeat unified",
+    "type" : "library",
+    "license": "LGPL-3.0-or-later",
+    "authors" : [
+        {
+            "name": "Stefan Lamm",
+            "email": "stefan.lamm@pluswerk.ag",
+            "homepage": "https://pluswerk.ag"
+        }
+    ],
+    "autoload" : {
+        "psr-4" : {
+            "Pluswerk\\UptimeRobot\\" : "src/"
+        }
+    },
+    "require" : {
+        "php" : "^7.2"
+    }
+}
