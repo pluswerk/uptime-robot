@@ -8,11 +8,6 @@ use Pluswerk\UptimeRobot\Exception\HeartBeatException;
 
 class HeartBeat
 {
-    public static function getInstance(): HeartBeat
-    {
-        return new self();
-    }
-
     /**
      * @param string $url
      * @throws \Pluswerk\UptimeRobot\Exception\HeartBeatException
