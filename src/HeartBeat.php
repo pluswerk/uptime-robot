@@ -14,7 +14,14 @@ class HeartBeat
      */
     public function alive(string $url): void
     {
-        $headers = get_headers($url);
+        $context = stream_context_set_default(
+            [
+                'http' => [
+                    'timeout' => 1,
+                ],
+            ]
+        );
+        $headers = @get_headers($url, false, $context);
         if (false === $headers) {
             throw new HeartBeatException('HeartBeat error occurred sending alive');
         }
