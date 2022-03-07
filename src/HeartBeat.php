@@ -17,7 +17,7 @@ class HeartBeat
         $context = stream_context_set_default(
             [
                 'http' => [
-                    'timeout' => 1,
+                    'timeout' => 5,
                 ],
             ]
         );
