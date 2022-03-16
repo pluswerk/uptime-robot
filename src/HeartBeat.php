@@ -21,7 +21,7 @@ class HeartBeat
                 ],
             ]
         );
-        $headers = @get_headers($url, false, $context);
+        $headers = @get_headers($url, 0, $context);
         if (false === $headers) {
             throw new HeartBeatException('HeartBeat error occurred sending alive');
         }
