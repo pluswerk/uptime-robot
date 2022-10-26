@@ -4,3 +4,7 @@ parameters:
 			message: "#^Parameter \\#2 \\$associative of function get_headers expects bool, int\\|false given\\.$#"
 			count: 1
 			path: src/HeartBeat.php
+		-
+			message: "#^Parameter \\#2 \\$format of function get_headers expects int, int\\|false given\\.$#"
+			count: 1
+			path: src/HeartBeat.php

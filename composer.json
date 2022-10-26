@@ -20,7 +20,7 @@
         "psr/log": "^1 || ^2 || ^3"
     },
     "require-dev": {
-        "pluswerk/grumphp-config": "^5.0"
+        "pluswerk/grumphp-config": "^4.0 || ^5.0"
     },
     "config": {
         "allow-plugins": {

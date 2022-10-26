@@ -8,8 +8,10 @@ use Psr\Log\LoggerInterface;
 
 class HeartBeat
 {
-    private int $lastThrottledExecution = 0;
-    private ?LoggerInterface $logger = null;
+    /** @var int */
+    private $lastThrottledExecution = 0;
+    /** @var LoggerInterface|null */
+    private $logger = null;
 
     public function __construct(LoggerInterface $logger = null)
     {
