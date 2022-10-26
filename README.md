@@ -5,14 +5,14 @@ This package wraps another PHP function to create and send a heartbeat for uptim
 ## Installation
 
 ```
-composer require pluswerk/uptime-robot
+composer req pluswerk/uptime-robot
 ```
 
 ## Usage
 Send request to UptimeRobot:
 ```php
 $heartBeat = new HeartBeat();
-$heartBeat->alive($yourUptimeUrl);
+$heartBeat->alive('https://heartbeat.uptimerobot.com/m0000000000-0000000000000000000000000');
 ```
 
 Throttle your requests with a given time:
