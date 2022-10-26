@@ -4,14 +4,18 @@ declare(strict_types=1);
 
 namespace Pluswerk\UptimeRobot;
 
-use Pluswerk\UptimeRobot\Exception\HeartBeatException;
+use Psr\Log\LoggerInterface;
 
 class HeartBeat
 {
-    /**
-     * @param string $url
-     * @throws \Pluswerk\UptimeRobot\Exception\HeartBeatException
-     */
+    private int $lastThrottledExecution = 0;
+    private ?LoggerInterface $logger = null;
+
+    public function __construct(LoggerInterface $logger = null)
+    {
+        $this->logger = $logger;
+    }
+
     public function alive(string $url): void
     {
         $context = stream_context_set_default(
@@ -21,9 +25,13 @@ class HeartBeat
                 ],
             ]
         );
-        $headers = @get_headers($url, 0, $context);
+
+        $headers = @get_headers($url, PHP_MAJOR_VERSION >= 8 ? false : 0, $context);
         if (false === $headers) {
-            throw new HeartBeatException('HeartBeat error occurred sending alive');
+            if ($this->logger) {
+                $this->logger->warning('HeartBeat error occurred sending alive');
+            }
+            return;
         }
 
         foreach ($headers as $header) {
@@ -32,6 +40,16 @@ class HeartBeat
             }
         }
 
-        throw new HeartBeatException('HeartBeat alive did not receive proper http headers from uptime-robot');
+        if ($this->logger) {
+            $this->logger->warning('HeartBeat alive did not receive proper http headers from uptime-robot');
+        }
+    }
+
+    public function throttledAlive(string $url, int $throttleTime): void
+    {
+        if (time() > $this->lastThrottledExecution + $throttleTime) {
+            $this->alive($url);
+            $this->lastThrottledExecution = time();
+        }
     }
 }
