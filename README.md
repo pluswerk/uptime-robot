@@ -2,6 +2,10 @@
 
 This package wraps another PHP function to create and send a heartbeat for uptime-robot and can log a warning if request was not succesful.
 
+## Upgrade from 1 to 2
+
+there is no `HeartBeatException` anymore. If you want to log that the request to uptime-robot has failed, you need to inject an `\Psr\Log\LoggerInterface` in the constructor.
+
 ## Installation
 
 ```
