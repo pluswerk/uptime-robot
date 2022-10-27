@@ -16,6 +16,24 @@
         }
     },
     "require" : {
-        "php" : "^7.2"
+        "php" : "^7.2 || ~8.0 || ~8.1",
+        "psr/log": "^1 || ^2 || ^3"
+    },
+    "require-dev": {
+        "pluswerk/grumphp-config": "^4.0 || ^5.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true,
+            "pluswerk/grumphp-config": true
+        }
+    },
+    "extra": {
+        "pluswerk/grumphp-config": {
+            "auto-setting": true
+        },
+        "grumphp": {
+            "config-default-path": "vendor/pluswerk/grumphp-config/grumphp.yml"
+        }
     }
 }
