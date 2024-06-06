@@ -8,14 +8,10 @@ use Psr\Log\LoggerInterface;
 
 class HeartBeat
 {
-    /** @var int */
-    private $lastThrottledExecution = 0;
-    /** @var LoggerInterface|null */
-    private $logger = null;
+    private int $lastThrottledExecution = 0;
 
-    public function __construct(LoggerInterface $logger = null)
+    public function __construct(private ?LoggerInterface $logger = null)
     {
-        $this->logger = $logger;
     }
 
     public function alive(string $url): void
@@ -30,9 +26,8 @@ class HeartBeat
 
         $headers = @get_headers($url, PHP_MAJOR_VERSION >= 8 ? false : 0, $context);
         if (false === $headers) {
-            if ($this->logger) {
-                $this->logger->warning('HeartBeat error occurred sending alive');
-            }
+            $this->logger?->warning('HeartBeat error occurred sending alive');
+
             return;
         }
 
