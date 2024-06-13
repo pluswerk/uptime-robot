@@ -1,39 +1,34 @@
 {
-    "name" : "pluswerk/uptime-robot",
-    "description" : "Simple wrapper to call uptime-robot heartbeat unified",
-    "type" : "library",
-    "license": "LGPL-3.0-or-later",
-    "authors" : [
-        {
-            "name": "Stefan Lamm",
-            "email": "stefan.lamm@pluswerk.ag",
-            "homepage": "https://pluswerk.ag"
-        }
-    ],
-    "autoload" : {
-        "psr-4" : {
-            "Pluswerk\\UptimeRobot\\" : "src/"
-        }
-    },
-    "require" : {
-        "php" : "^7.2 || ~8.0 || ~8.1",
-        "psr/log": "^1 || ^2 || ^3"
-    },
-    "require-dev": {
-        "pluswerk/grumphp-config": "^4.0 || ^5.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "phpro/grumphp": true,
-            "pluswerk/grumphp-config": true
-        }
-    },
-    "extra": {
-        "pluswerk/grumphp-config": {
-            "auto-setting": true
-        },
-        "grumphp": {
-            "config-default-path": "vendor/pluswerk/grumphp-config/grumphp.yml"
-        }
+  "name": "pluswerk/uptime-robot",
+  "description": "Simple wrapper to call uptime-robot heartbeat unified",
+  "license": "LGPL-3.0-or-later",
+  "type": "library",
+  "authors": [
+    {
+      "name": "Stefan Lamm",
+      "email": "stefan.lamm@pluswerk.ag",
+      "homepage": "https://pluswerk.ag"
     }
+  ],
+  "require": {
+    "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+    "psr/log": "^1 || ^2 || ^3"
+  },
+  "require-dev": {
+    "pluswerk/grumphp-config": "^6.0 || ^7.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Pluswerk\\UptimeRobot\\": "src/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "ergebnis/composer-normalize": true,
+      "phpro/grumphp": true,
+      "phpstan/extension-installer": true,
+      "pluswerk/grumphp-config": true
+    }
+  },
+  "extra": {}
 }
