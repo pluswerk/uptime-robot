@@ -10,7 +10,7 @@ class HeartBeat
 {
     private int $lastThrottledExecution = 0;
 
-    public function __construct(private ?LoggerInterface $logger = null)
+    public function __construct(private readonly ?LoggerInterface $logger = null)
     {
     }
 
@@ -24,7 +24,7 @@ class HeartBeat
             ]
         );
 
-        $headers = @get_headers($url, PHP_MAJOR_VERSION >= 8 ? false : 0, $context);
+        $headers = @get_headers($url, false, $context);
         if (false === $headers) {
             $this->logger?->warning('HeartBeat error occurred sending alive');
 
